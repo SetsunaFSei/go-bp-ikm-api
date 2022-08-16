@@ -1,0 +1,60 @@
+definitions:
+  dto.CreateCategoryDto:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      status:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /category:
+    get:
+      consumes:
+      - application/json
+      description: Get   category by id
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: category by id
+  /category/create:
+    post:
+      consumes:
+      - application/json
+      description: Create Category
+      parameters:
+      - description: Add category
+        in: body
+        name: account
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCategoryDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: string
+      summary: Add an CreateCategoryDto
+      tags:
+      - category
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
